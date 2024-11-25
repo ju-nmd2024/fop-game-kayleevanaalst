@@ -30,30 +30,28 @@ function draw() {
 function gameScreen() {
   background(187, 236, 240);
 
-  // Grass
+  // grass
   fill(87, 166, 57);
   rect(0, groundLevel, width, 50);
 
   fill (255,255,255);
   noStroke();
-      // Cloud 1
+      // clouds
       ellipse(100, 100, 120, 60);
       ellipse(140, 80, 120, 60);
       ellipse(180, 100, 120, 60);
       
-      // Cloud 2
       ellipse(350, 150, 140, 70);
       ellipse(400, 130, 120, 60);
       ellipse(450, 150, 130, 70);
       
-      // Cloud 3
       ellipse(500, 60, 100, 50);
       ellipse(550, 50, 120, 60);
       ellipse(580, 60, 100, 50);
 
 
 
-  // Landar movement
+  // landar movement
   lander.update();
   lander.display();
 
@@ -83,38 +81,33 @@ function startScreen() {
   
   fill(255, 255, 255, 200); 
   noStroke();
-    // Cloud 1
+    // clouds
     ellipse(100, 100, 120, 60);
     ellipse(140, 80, 120, 60);
     ellipse(180, 100, 120, 60);
-    
-    // Cloud 2
+  
     ellipse(350, 150, 140, 70);
     ellipse(400, 130, 120, 60);
     ellipse(450, 150, 130, 70);
     
-    // Cloud 3
     ellipse(500, 60, 100, 50);
     ellipse(550, 50, 120, 60);
     ellipse(580, 60, 100, 50);
+     
+    ellipse(100, 350, 120, 60);
+    ellipse(140, 340, 120, 60);
+    ellipse(180, 350, 120, 60);
+     
+    ellipse(350, 380, 140, 70);
+    ellipse(400, 360, 120, 60);
+    ellipse(450, 380, 130, 70);
     
-      // Cloud 4 (
-      ellipse(100, 350, 120, 60);
-      ellipse(140, 340, 120, 60);
-      ellipse(180, 350, 120, 60);
+    ellipse(500, 300, 100, 50);
+    ellipse(550, 290, 120, 60);
+    ellipse(580, 300, 100, 50);
     
-      // Cloud 5 
-      ellipse(350, 380, 140, 70);
-      ellipse(400, 360, 120, 60);
-      ellipse(450, 380, 130, 70);
-    
-      // Cloud 6
-      ellipse(500, 300, 100, 50);
-      ellipse(550, 290, 120, 60);
-      ellipse(580, 300, 100, 50);
-    
-      ellipse(50, 250, 100, 50);
-      ellipse(10, 230, 120, 60);
+    ellipse(50, 250, 100, 50);
+    ellipse(10, 230, 120, 60);
 }
 
 function resultScreen() {
@@ -132,20 +125,14 @@ function resultScreen() {
   fill(255, 222, 173);
   noStroke();
 
-  // Emoji
+  // sad emoji
   ellipse(300, 200, 200, 200);
-
-  // Eyes (white)
   fill(255);
-  ellipse(250, 160, 40, 40); // Left eye
-  ellipse(350, 160, 40, 40); // Right eye
-
-  // Pupils (black)
+  ellipse(260, 160, 40, 40); 
+  ellipse(340, 160, 40, 40); 
   fill(0);
-  ellipse(250, 160, 20, 20); // Left pupil
-  ellipse(350, 160, 20, 20); // Right pupil
-
-  // Mouth
+  ellipse(260, 160, 20, 20); 
+  ellipse(340, 160, 20, 20); 
   noFill();
   stroke(0); 
   strokeWeight(4);
@@ -166,11 +153,11 @@ function resultScreen() {
     noStroke();
     ellipse(300,200,200,200);
     fill(255);
-    ellipse(250,160,40,40);
-    ellipse(350,160,40,40);
+    ellipse(260,160,40,40);
+    ellipse(340,160,40,40);
     fill(0);
-    ellipse(250,160,20,20);
-    ellipse(350,160,20,20);
+    ellipse(260,160,20,20);
+    ellipse(340,160,20,20);
     noFill();
     stroke(0);
     strokeWeight(4);
@@ -231,7 +218,6 @@ class Lander {
     ellipse(this.x - 20, this.y + this.height / 2, 10, 20); // Left exhaust
     ellipse(this.x + 20, this.y + this.height / 2, 10, 20); // Right exhaust
 
-    // Legs 
     fill(255); 
     triangle(
       this.x - 10, this.y + this.height / 2, 
