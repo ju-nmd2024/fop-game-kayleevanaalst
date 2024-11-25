@@ -2,8 +2,6 @@ let lander;
 let gravity = 0.1;   
 let thrust = -1.5;
 let speed = 0;       
-let acceleration = 0.1;  
-let deacceleration = 0.98; 
 let maxSpeed = 5;  
 let groundLevel;  
 let landerWidth = 50;
@@ -24,7 +22,7 @@ function draw() {
     startScreen();
   } else if (state === "game") {
     gameScreen();
-  } else if (state === "You died!") {
+  } else if (state === "You died!" || state === "You landed!") {
     resultScreen();
   }
 }
@@ -37,6 +35,7 @@ function gameScreen() {
   rect(0, groundLevel, width, 50);
 
   fill (255,255,255);
+  noStroke();
       // Cloud 1
       ellipse(100, 100, 120, 60);
       ellipse(140, 80, 120, 60);
@@ -65,8 +64,9 @@ function gameScreen() {
   if (lander.y >= groundLevel - landerHeight / 2) {
     if (abs(lander.speed) > 2) {  
       state = "You died!"; 
-    } else {
-      state = "You died!";
+    } 
+    else if (abs(lander.speed) <= 2) {
+      state = "You landed!";
     }
   }
 }
@@ -78,7 +78,7 @@ function startScreen() {
   rect(230, 195, 150, 70);
   
   textSize(40);
-  fill(18, 43, 128);
+  fill(181, 18, 94);
   text("Start", 263, 244); 
   
   fill(255, 255, 255, 200); 
@@ -118,10 +118,12 @@ function startScreen() {
 }
 
 function resultScreen() {
+  if (state === "You died!") {
   background(125, 16, 9);
 
   textSize(30);
-  fill(255, 255, 255);
+  fill(242, 219, 150);
+  noStroke();
   text("You died!", 240, 350);
   textSize (20);
   fill (255,255,255);
@@ -148,6 +150,32 @@ function resultScreen() {
   stroke(0); 
   strokeWeight(4);
   arc(300, 250, 120, 100, PI, TWO_PI);
+  }
+  else if (state === "You landed!") {
+    background (133,201,135);
+    textSize(30);
+    fill(0,128,0);
+    noStroke();
+    text("You landed safely!" , 180,350);
+    textSize(20);
+    fill(255,255,255);
+    text("Click to restart" , 240,380);
+
+    //happy emoji
+    fill(255,222,173);
+    noStroke();
+    ellipse(300,200,200,200);
+    fill(255);
+    ellipse(250,160,40,40);
+    ellipse(350,160,40,40);
+    fill(0);
+    ellipse(250,160,20,20);
+    ellipse(350,160,20,20);
+    noFill();
+    stroke(0);
+    strokeWeight(4);
+    arc(300,230,120,100,0, PI);
+  }
 }
 
 function keyPressed() {
@@ -162,7 +190,6 @@ class Lander {
     this.x = x;
     this.y = y;
     this.speed = speed;
-    this.acceleration = acceleration;
     this.width = landerWidth;
     this.height = landerHeight;
   }
@@ -221,7 +248,7 @@ function mouseClicked() {
     state = "game"; 
   } else if (state === "game") {
     state = "You died!"; 
-  } else if (state === "You died!") {
+  } else if (state === "You died!" || state === "You landed!") {
     state = "game"; 
     lander = new Lander(width / 2, 100, 0, 0); 
   }
