@@ -146,7 +146,7 @@ function resultScreen() {
     text("You landed safely!" , 180,350);
     textSize(20);
     fill(255,255,255);
-    text("Click to restart" , 240,380);
+    text("Click to play again" , 230,380);
 
     //happy emoji
     fill(255,222,173);
