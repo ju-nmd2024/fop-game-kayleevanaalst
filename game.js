@@ -120,7 +120,7 @@ function resultScreen() {
   text("You died!", 240, 350);
   textSize (20);
   fill (255,255,255);
-  text ("Click to restart", 240,380);
+  text ("Click to try again", 230,380);
 
   fill(255, 222, 173);
   noStroke();
