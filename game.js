@@ -173,7 +173,7 @@ function keyPressed() {
 
 // Lander
 class Lander {
-  constructor(x, y, speed, acceleration) {
+  constructor(x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
