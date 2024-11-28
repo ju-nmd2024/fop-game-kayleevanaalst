@@ -184,15 +184,6 @@ class Lander {
   update() {
     this.speed += gravity;
     this.y += this.speed;
-
-    if (keyIsDown(LEFT_ARROW)) {
-      this.x -= 2;
-    }
-    if (keyIsDown(RIGHT_ARROW)) {
-      this.x += 2;
-    }
-
-    this.x = constrain(this.x, 0, width);
   }
 
   applyThrust() {
